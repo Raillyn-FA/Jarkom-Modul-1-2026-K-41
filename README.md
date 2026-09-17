@@ -54,5 +54,74 @@ Eiri menyusup ke ruang server dan memasang perangkat keyboard USB berbahaya pada
 ```bash
 usb.idVendor || usb.bDescriptorType == 1
 ```
-3. Cek Frame 2 (`GET DESCRIPTOR Response DEVICE`) pada panel `DEVICE DESCRIPTOR` untuk menemukan `Vendor ID (0x046d)`, `Product ID (0xc31c)`, dan `USB Device Address (7)`.
+3. Cek Frame 2 (`GET DESCRIPTOR Response DEVICE`) pada panel `DEVICE DESCRIPTOR` untuk menemukan `Vendor ID (0x046d)`, `Product ID (0xc31c)`, dan `USB Device Address (2/7)`.
+
 ![Screenshot](source/Jarkom_15_Wireshark.png)
+
+4. Ekstrak data raw keystroke menggunakan `tshark` dari terminal WSL:
+```bash
+tshark -r /mnt/c/Users/rayhan/Downloads/soal15_wired_usb_hid.pcap -Y "usb.capdata" -T fields -e usb.capdata
+```
+Hasil sebelum decode:
+![Screenshot](source/Jarkom_15_BeforeDecode.png)
+
+Hasil setelah decode:
+![Screenshot](source/Jarkom_15_AfterDecode.png)
+
+### 2. Command
+1. Buka cmd, lalu pindah ke wsl dengan mengetik `wsl`.
+2. ketik `nc [IP_Group] 3401` dalam case ini, kami menggunakanan punya kami.
+```bash
+nc 10.4.89.247 3402
+```
+3. Isi pertanyaan berdasarkan data yang telah diperoleh, lalu nanti akan mendapatkan hasilnya. Dalam case kami, kami mendapatkan hasil seperti ini:
+- Vendor ID: 0x046d
+
+- Product ID: 0xc31c
+
+- USB Device Address: 7
+
+- Secret Message: Wired_Protocol_7_is_alive_2026
+
+- Flag: KOMJAR26{USB_K3ystr0k3_Ks09UgdPL9kvS3UKjVHDkJScg}
+
+![Screenshot](source/Jarkom_15_Hasil.png)
+
+## Soal 16
+Eiri meletakkan file malware di server. Dari file capture wired_ftp_theft.pcap, lakukan analisis lalu lintas FTP untuk mengidentifikasi alamat IP server FTP penyerang, banner software FTP yang digunakan, kredensial login penyerang, serta ukuran (size in bytes) dari file malware knights_payload.exe yang diunduh. Validasi temuan kalian pada socket server:
+([Link File](https://drive.google.com/drive/folders/1qBeAXVx1MG14L0jzGefqs3t8qO8VRMmb?usp=sharing)) nc [IP_Group] 3403 
+
+### 1. Langkah Pengerjaan
+1. Buka File `soal16_wired_ftp_theft.pcap` melalui `Link File`.
+2. Melakukan Filter.
+```bash
+ftp
+```
+3. Pada bagian info akan menampilkan jawaban-jawabannya
+
+![Screenshot](source/Jarkom_16_ftp.png)
+
+### 2. Command
+1. Buka cmd, lalu pindah ke wsl dengan mengetik `wsl`.
+2. ketik `nc [IP_Group] 3401` dalam case ini, kami menggunakanan punya kami.
+```bash
+nc 10.4.89.247 3403
+```
+3. Isi pertanyaan berdasarkan data yang telah diperoleh, lalu nanti akan mendapatkan hasilnya. Dalam case kami, kami mendapatkan hasil seperti ini:
+- FTP Username: knights_agent
+
+- FTP Password: N4v1_s3cur3_2026
+
+- Downloaded File Name: knights_payload.exe
+
+- FTP Server Version: vsftpd 3.0.5
+
+- Flag: KOMJAR26{FTP_Th3ft_sfFYZTP1Y7PFqpMBFDyQswKFQ}
+
+
+![Screenshot](source/Jarkom_16_Hasil.png)
+
+## Soal 17
+Alice membuat halaman web di node-nya. Eiri memanfaatkan celah untuk mengunduh payload berbahaya ke sistem Alice. Analisis file capture wired_http_c2.pcap untuk mengidentifikasi nama domain (Host) tempat malware diunduh, alamat IP server penyerang, nama file executable malware yang diunduh, serta kode status HTTP yang dikembalikan. Validasi temuan kalian pada socket server:
+([Link File](https://drive.google.com/drive/folders/1iPYESj5AN-uXYXfD2Wo2cRrm_Rigr_D6?usp=sharing)) `nc [IP_Group] 3404`
+
