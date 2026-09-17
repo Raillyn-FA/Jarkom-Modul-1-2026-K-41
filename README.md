@@ -3,7 +3,7 @@
 |         Nama         |     NRP     |
 |----------------------|-------------|
 |Rayhan Fadhilah Allayn| 5027251126  |
-|                      |             |
+|Aliya Rahmadina       | 5027251056  |
 
 ## Soal 14
 
