@@ -335,6 +335,9 @@ echo "=== Setup selesai ==="
 ps aux | grep vsftpd
 ```
 
+<img width="1920" height="1080" alt="Screenshot 2026-09-19 232711" src="https://github.com/user-attachments/assets/e552b576-eeb1-49ca-87b5-fd56af5573e1" />
+
+
 ## Soal 8
 
 Kelompok Knights mengirimkan dokumen laporan intelijen ke FTP Server Chisa dengan melakukan koneksi FTP client dari node Knights menggunakan akun alice, lalu meng-upload file yang ditentukan. Dianalisis sesi Wireshark untuk menemukan perintah FTP upload (STOR), kode status sukses server (226), dan port data TCP yang dinegosiasikan pada mode PASV.
@@ -364,6 +367,8 @@ Menganalisis hasil capture
 tcpdump -r /root/ftp_capture.pcap -A
 ```
 
+<img width="1920" height="1080" alt="Screenshot 2026-09-19 233428" src="https://github.com/user-attachments/assets/ca043d9c-177f-4037-932e-8f1772d04a92" />
+
 ## Soal 9
 
 Mika mengakses dokumen Protokol Tujuh dari FTP Server Chisa menggunakan akun mika. Dibuktikan pembatasan read-only dengan mencoba mengunggah file baru dari akun mika, dan ditunjukkan pesan error respon server (550 Permission denied) saat mika mencoba melakukan upload.
@@ -383,6 +388,7 @@ lftp -u mika,mikapass123 10.84.2.2 -e "get protokol_tujuh.txt; put /etc/passwd -
 ```
 
 <img width="1920" height="1080" alt="Jarkom_9_PermissionDenied" src="https://github.com/user-attachments/assets/2f87fef3-42c7-46df-8652-08c683444e67" />
+<img width="1920" height="1080" alt="Screenshot 2026-09-19 233535" src="https://github.com/user-attachments/assets/5dbc86e9-8f8c-4f63-8455-27e670421f80" />
 
 
 ## Soal 10
@@ -442,6 +448,9 @@ Analisis hasil capture
 tcpdump -r /root/telnet_capture.pcap -A
 ```
 
+<img width="1920" height="1080" alt="Screenshot 2026-09-19 234211" src="https://github.com/user-attachments/assets/e53d561c-0889-4725-853d-c4361bfd2d12" />
+
+
 ## Soal 12
 
 Alice mencurigai Knights menjalankan beberapa layanan rahasia di node-nya. Dilakukan pemindaian port dari node Alice ke node Knights menggunakan Netcat untuk memeriksa port 22 (SSH) dan 80 (HTTP) dalam keadaan terbuka, serta port rahasia 7777 dalam keadaan tertutup. Dianalisis di Wireshark perbedaan TCP Flag antara port terbuka (SYN-ACK) dengan port tertutup (RST-ACK).
@@ -475,6 +484,8 @@ Analisis hasil capture
 ```
 tcpdump -r /root/portscan_capture.pcap -n
 ```
+
+<img width="1920" height="1080" alt="Screenshot 2026-09-19 234334" src="https://github.com/user-attachments/assets/0c0c65a7-bb88-4e77-8a3c-c1df48d53553" />
 
 ## Soal 13
 
@@ -523,7 +534,9 @@ tcpdump -i eth0 -w /root/ssh_capture.pcap &
 ssh -i /root/.ssh/id_rsa mika_admin@10.84.3.2
 pkill tcpdump
 ```
-<img width="1920" height="1080" alt="Jarkom_13_SSHProtocol" src="https://github.com/user-attachments/assets/40ecdd6c-6dda-49e6-8bdb-2f4f9924da2a" />
+
+<img width="1920" height="1080" alt="Screenshot 2026-09-19 233712" src="https://github.com/user-attachments/assets/992a0d2c-1d8c-4f60-aa74-919bb3b52488" />
+
 
 ## Soal 14
 
